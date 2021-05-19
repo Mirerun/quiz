@@ -1,5 +1,6 @@
 package app.murauchi.mirerun.quiz
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -46,9 +47,13 @@ class QuizActivity : AppCompatActivity() {
             //現在のクイズ数と全問クイズ数が一致するか比較して
             if (quizCount == quizLists.size) {
                 //一緒なら結果画面へ移動する準備
+                val resultIntent: Intent = Intent(this, ResultActivity::class.java)
                 //クイズ数をセット
+                resultIntent.putExtra("QuizCount", quizLists.size)
                 //正解数をセット
+                resultIntent.putExtra("CorrectCount", quizLists.size)
                 //結果画面に移動
+                startActivity(resultIntent)
 
             } else {
                 //一緒でなければ判定●×画像を非表示にする
